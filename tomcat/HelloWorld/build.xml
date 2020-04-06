@@ -1,0 +1,70 @@
+<project name="Hellow World" default="dist" basedir=".">
+
+	<echo message="JAVA_HOME is set to = ${env.JAVA_HOME}" />
+	
+	<!-- Configure the directory into which the web application is built -->
+	<property name="build" value="${basedir}/build" />
+	<property name="dist" value="${basedir}/dist" />
+	<property name="src" value="${basedir}/src" />
+
+
+	<!-- Configure the context path for this application -->
+	<property name="path" value="/articy" />
+
+	<target name="clean">
+		<!-- Delete old build -->
+		<delete dir="${build}" />
+		<delete dir="${dist}" />
+	</target>
+	<!-- Executable Targets -->
+	<target name="compile" description="Compile web application" depends="clean">
+		<mkdir dir="${build}" />
+		<mkdir dir="${build}\WEB-INF\lib" />
+		<mkdir dir="${build}\WEB-INF\classes" />
+		<mkdir dir="${build}\WEB-INF\META-INF" />
+
+		<!-- compile the java code from ${src} into ${build} -->
+		<javac srcdir="${src}" destdir="${build}\WEB-INF\classes" debug="true">
+			<classpath>
+				<pathelement path="${classpath}" />
+				<!-- Web App libs -->
+				<fileset dir="WebContent\WEB-INF\lib">
+					<include name="**/*.jar" />
+				</fileset>
+
+				<!-- Tomcat Libs -->
+				<fileset dir="serverlib">
+					<include name="**/*.jar" />
+				</fileset>
+
+
+			</classpath>
+
+		</javac>
+		<copy todir="${build}/">
+			<fileset dir="WebContent" />
+		</copy>
+		<copy todir="${build}/WEB-INF/lib">
+			<fileset dir="WebContent/WEB-INF/lib" />
+		</copy>
+	</target>
+
+	<target name="dist" depends="compile">
+		<mkdir dir="${dist}" />
+		<jar jarfile="${dist}/HelloWorld.war" basedir="${build}"/>
+		<echo message="${dist}/HelloWorld.war"/>
+	</target>
+
+	<target name="deploy" description="Install web application" depends="compile">
+		<deploy url="${url}" username="${username}" password="${password}" path="${path}" war="file:${build}${path}.war" />
+	</target>
+
+	<target name="reload" description="Reload web application" depends="compile">
+		<reload url="${url}" username="${username}" password="${password}" path="${path}" />
+	</target>
+
+	<target name="undeploy" description="Remove web application">
+		<undeploy url="${url}" username="${username}" password="${password}" path="${path}" />
+	</target>
+
+</project>
