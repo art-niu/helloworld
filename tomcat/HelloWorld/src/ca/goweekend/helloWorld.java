@@ -2,6 +2,8 @@ package ca.goweekend;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,9 +30,27 @@ public class helloWorld extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        /* Get IP and Host Name to demonstrate the requests are served from different node in cluster */
+		InetAddress ip = null;
+        String hostName = null;
+        
+		try {
+            ip = InetAddress.getLocalHost();
+            hostName = ip.getHostName();
+            System.out.println("Your current IP address : " + ip);
+            System.out.println("Your current Hostname : " + hostName);
+ 
+        } catch (UnknownHostException e) {
+ 
+            e.printStackTrace();
+        }
+		
 		PrintWriter out = response.getWriter();
 		out.println("Hello World!");
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		out.println(hostName);
+		out.println(ip);
+		response.getWriter().append("\nServed at: ").append(request.getContextPath());
 	}
 
 	/**
