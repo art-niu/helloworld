@@ -1,0 +1,12 @@
+Create/Apply HelloWorld Deployment
+$ kubectl apply -f helloworld-deployment.yaml
+
+Create/Apply HelloWorld Service with Load Balancer
+$ kubectl apply -f helloworld-service-loadbalancer.yaml
+
+Create/Apply HelloWorld Ingress with Load Balancer
+$ kubectl apply -f helloworld-ingress-loadbalancer.yaml
+
+Below Yaml files for local scenario:
+helloworld-ingress.yaml
+helloworld-service.yaml

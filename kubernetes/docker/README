@@ -1,0 +1,17 @@
+Replace HelloWorld.war with your newer version.
+
+Build Docker Image with application HelloWorld
+
+$ docker build -t tomcat-helloworld .
+
+Verify the image
+
+$ docker image ls
+
+Push the new image to Docker Hub
+Tag the new image
+
+$ docker tag tomcat-helloworld arthurniu/helloworld-tomcat:1.0
+
+Push the new image to docker Hub
+$ docker push arthurniu/helloworld-tomcat:1.0

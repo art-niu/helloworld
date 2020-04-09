@@ -1,0 +1,12 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: helloworld-ingress
+  namespace: default
+  selfLink: /apis/extensions/v1beta1/namespaces/default/ingresses/helloworld-ingress
+spec:
+  backend:
+    serviceName: helloworld-service
+    servicePort: 80
+status:
+  loadBalancer: {}

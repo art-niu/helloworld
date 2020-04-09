@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: helloworld-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  sessionAffinity: None
+  type: LoadBalancer
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          serviceName: helloworld-service
+          servicePort: 80
+status:
+  loadBalancer:
+    ingress:
+    - ip: 35.192.171.94
