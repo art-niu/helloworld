@@ -1,3 +1,6 @@
 1. Create new docker image with your application with the tools in Docker
 
 2. Launch your new version application with the tools in kubernetes
+
+Expose Service
+GCP: https://cloud.google.com/kubernetes-engine/docs/how-to/exposing-apps
