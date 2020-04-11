@@ -19,16 +19,16 @@
 	<!-- Executable Targets -->
 	<target name="compile" description="Compile web application" depends="clean">
 		<mkdir dir="${build}" />
-		<mkdir dir="${build}\WEB-INF\lib" />
-		<mkdir dir="${build}\WEB-INF\classes" />
-		<mkdir dir="${build}\WEB-INF\META-INF" />
+		<mkdir dir="${build}/WEB-INF/lib" />
+		<mkdir dir="${build}/WEB-INF/classes" />
+		<mkdir dir="${build}/WEB-INF/META-INF" />
 
 		<!-- compile the java code from ${src} into ${build} -->
-		<javac srcdir="${src}" destdir="${build}\WEB-INF\classes" debug="true">
+		<javac includeantruntime="false" srcdir="${src}" destdir="${build}/WEB-INF/classes" debug="true">
 			<classpath>
 				<pathelement path="${classpath}" />
 				<!-- Web App libs -->
-				<fileset dir="WebContent\WEB-INF\lib">
+				<fileset dir="WebContent/WEB-INF/lib">
 					<include name="**/*.jar" />
 				</fileset>
 
