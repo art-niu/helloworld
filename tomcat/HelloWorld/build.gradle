@@ -1,0 +1,8 @@
+apply plugin: 'java-library'
+apply plugin: 'war'
+
+dependencies {
+    def tomcatVersion = '9.0.33'
+    providedCompile 'javax.servlet:javax.servlet-api:${tomcatVersion}' 
+    testCompile 'junit:junit:4.12'
+}
