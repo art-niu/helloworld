@@ -1,7 +1,7 @@
 <project name="Hellow World" default="dist" basedir=".">
 
 	<echo message="JAVA_HOME is set to = ${env.JAVA_HOME}" />
-	
+
 	<!-- Configure the directory into which the web application is built -->
 	<property name="build" value="${basedir}/build" />
 	<property name="dist" value="${basedir}/dist" />
@@ -28,7 +28,8 @@
 			<classpath>
 				<pathelement path="${classpath}" />
 				<!-- Web App libs -->
-				<fileset dir="WebContent/WEB-INF/lib">
+
+				<fileset dir="${build}/WebContent/WEB-INF/lib">
 					<include name="**/*.jar" />
 				</fileset>
 
@@ -51,8 +52,8 @@
 
 	<target name="dist" depends="compile">
 		<mkdir dir="${dist}" />
-		<jar jarfile="${dist}/HelloWorld.war" basedir="${build}"/>
-		<echo message="${dist}/HelloWorld.war"/>
+		<jar jarfile="${dist}/HelloWorld.war" basedir="${build}" />
+		<echo message="${dist}/HelloWorld.war" />
 	</target>
 
 	<target name="deploy" description="Install web application" depends="compile">
