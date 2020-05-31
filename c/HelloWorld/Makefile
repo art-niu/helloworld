@@ -2,5 +2,5 @@
 #
 # 
 all:
-	gcc helloworld.c together.c -o helloworld
+	gcc helloWorld.c together.c -o helloworld
 
