@@ -2,5 +2,5 @@
 	#define HELPER_H
 	
 	/* helper function */
-	void helper_function(void)
+	void helper_function(void);
 #endif
