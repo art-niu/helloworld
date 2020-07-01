@@ -10,3 +10,9 @@ $ kubectl apply -f helloworld-ingress-loadbalancer.yaml
 Below Yaml files for local scenario:
 helloworld-ingress.yaml
 helloworld-service.yaml
+
+The Context Root is:
+/HelloWorld/helloWorld
+
+You can form the url like below:
+http://15.222.242.109:30600/HelloWorld/helloWorld
