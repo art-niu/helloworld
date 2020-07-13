@@ -46,7 +46,7 @@ public class helloWorld extends HttpServlet {
         }
 		
 		PrintWriter out = response.getWriter();
-		out.println("Welcome to the World V1.0!");
+		out.println("Welcome to the World V1.1!");
 		out.println(hostName);
 		out.println(ip);
 		response.getWriter().append("\nServed at: ").append(request.getContextPath());
