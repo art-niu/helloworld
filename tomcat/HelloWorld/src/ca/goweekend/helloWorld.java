@@ -23,7 +23,6 @@ public class helloWorld extends HttpServlet {
      */
     public helloWorld() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -35,7 +34,7 @@ public class helloWorld extends HttpServlet {
 		InetAddress ip = null;
         String hostName = null;
         
-		try {
+	try {
             ip = InetAddress.getLocalHost();
             hostName = ip.getHostName();
             System.out.println("Your current IP address : " + ip);
@@ -47,9 +46,9 @@ public class helloWorld extends HttpServlet {
         }
 		
 		PrintWriter out = response.getWriter();
-		out.println("<p>Hello World! V1.0</p>");
-		out.println("<p>" + hostName + "</p>");
-		out.println("<p>" + ip + "</p>");
+		out.println("Welcome to the World V1.0!");
+		out.println(hostName);
+		out.println(ip);
 		response.getWriter().append("\nServed at: ").append(request.getContextPath());
 	}
 
